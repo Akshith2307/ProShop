@@ -1,7 +1,6 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
-import { Row, Col, ListGroup, Image } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Button } from 'react-bootstrap'
 import products from '../products'
 import Rating from "../components/Rating"
 
@@ -44,8 +43,19 @@ function ProductScreen(match) {
                     </Row>
                 </ListGroup.Item>   
                     
+                <ListGroup.Item>
+                    <Row>
+                        <Col> Status:</Col>
+                        <Col>{product.countInStock>0? 'In  Stock':'Out of Stock'}</Col>
+                    </Row>
+                </ListGroup.Item>
             
-            </ListGroup>
+
+                <ListGroup.Item className="d-flex justify-content-center"> 
+                    <Button className="btn-block" type="button" disabled={product.countInStock == 0}>Add to Cart</Button> 
+                </ListGroup.Item>
+
+                </ListGroup>
 
         </Col>
       </Row>
